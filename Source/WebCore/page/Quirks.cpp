@@ -1793,34 +1793,10 @@ bool Quirks::needsIPadMiniUserAgent(const URL& url)
     if (host == "tv.kakao.com"_s || host.endsWith(".tv.kakao.com"_s))
         return true;
 
-    if (host == "tving.com"_s || host.endsWith(".tving.com"_s))
-        return true;
-
-    if (host == "live.iqiyi.com"_s || host.endsWith(".live.iqiyi.com"_s))
-        return true;
-
-    if (host == "jsfiddle.net"_s || host.endsWith(".jsfiddle.net"_s))
-        return true;
-
-    if (host == "video.sina.com.cn"_s || host.endsWith(".video.sina.com.cn"_s))
-        return true;
-
     if (host == "huya.com"_s || host.endsWith(".huya.com"_s))
         return true;
 
-    if (host == "video.tudou.com"_s || host.endsWith(".video.tudou.com"_s))
-        return true;
-
     if (host == "cctv.com"_s || host.endsWith(".cctv.com"_s))
-        return true;
-
-    if (host == "v.china.com.cn"_s)
-        return true;
-
-    if (host == "trello.com"_s || host.endsWith(".trello.com"_s))
-        return true;
-
-    if (host == "ted.com"_s || host.endsWith(".ted.com"_s))
         return true;
 
     if (host.contains("hsbc."_s)) {
@@ -1842,18 +1818,9 @@ bool Quirks::needsIPadMiniUserAgent(const URL& url)
             return true;
         if (host == "hsbc.com.ph"_s || host.endsWith(".hsbc.com.ph"_s))
             return true;
-        if (host == "hsbc.com"_s || host.endsWith(".hsbc.com"_s))
-            return true;
         if (host == "hsbc.com.cn"_s || host.endsWith(".hsbc.com.cn"_s))
             return true;
     }
-
-    if (host == "nhl.com"_s || host.endsWith(".nhl.com"_s))
-        return true;
-
-    // FIXME: Remove this quirk when <rdar://problem/59480381> is complete.
-    if (host == "fidelity.com"_s || host.endsWith(".fidelity.com"_s))
-        return true;
 
     // FIXME: Remove this quirk when <rdar://problem/61733101> is complete.
     if (host == "roblox.com"_s || host.endsWith(".roblox.com"_s))
