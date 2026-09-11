@@ -170,6 +170,15 @@ static constexpr auto ceacBeforeUnloadFixScript = R"js((function() {
     };
 })();)js"_s;
 
+// x.com https://bugs.webkit.org/show_bug.cgi?id=323931
+static constexpr auto xGoogleSignInButtonFixScript = R"js((function() {
+    if (window.__xGoogleSignInButtonFix) return;
+    window.__xGoogleSignInButtonFix = true;
+    var style = document.createElement('style');
+    style.textContent = '.jf-gsi-hit > div > div:first-child:empty:not([role]) { display: none !important; }';
+    (document.head || document.documentElement).appendChild(style);
+})();)js"_s;
+
 static inline OptionSet<AutoplayQuirk> NODELETE allowedAutoplayQuirks(Document& document)
 {
     auto* loader = document.loader();
@@ -1977,6 +1986,10 @@ String Quirks::scriptToEvaluateBeforeRunningScriptFromURL(const URL& scriptURL)
     // invideo.io https://webkit.org/b/311602
     if (m_quirksData.isSite(QuirkSite::InVideo)) [[unlikely]]
         return "if(!window.chrome)window.chrome={};"_s;
+
+    // x.com https://bugs.webkit.org/show_bug.cgi?id=323931
+    if (m_quirksData.isSite(QuirkSite::X) && scriptURL.host() == "accounts.google.com"_s && scriptURL.path() == "/gsi/client"_s) [[unlikely]]
+        return xGoogleSignInButtonFixScript;
 
     return { };
 }

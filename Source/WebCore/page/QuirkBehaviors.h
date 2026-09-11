@@ -57,6 +57,7 @@ enum class QuirkSite : uint8_t {
     Vimeo,
     Walmart,
     WebEx,
+    X,
 
     NumberOfSites
 };

@@ -768,7 +768,10 @@ static constexpr Quirk fullTable[] = {
             requiresUserGestureToLoadInPictureInPictureQuirk,
             // x.com: rdar://73369869
             requiresUserGestureToPauseInPictureInPictureQuirk,
-        } },
+            // x.com: https://bugs.webkit.org/show_bug.cgi?id=323931
+            needsScriptToEvaluateBeforeRunningScriptFromURLQuirk,
+        },
+        .site = QuirkSite::X },
 
     { .match = URLMatch::domain("x.com"_s),
         .behaviors = {
